@@ -3,6 +3,7 @@
 # 代码内容：登录购物网站
 import requests
 import urllib
+from utils.utilsrequests import reqests_get
 #第1部分获取商品列表信息
 def goods_list():
     url= 'http://admin.5istudy.online/goods/'
@@ -16,8 +17,9 @@ def goods_list():
         'search':'',
         'ordering':'-add_time'
     }
-    r = requests.get(url,json=data)
-    print(r.json())
+    #r = requests.get(url,json=data)
+    r = reqests_get(url,json=data)
+    print(r)
 
 if __name__ == '__main__':
     goods_list()

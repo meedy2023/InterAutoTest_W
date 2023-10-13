@@ -3,6 +3,7 @@
 # 代码内容：登录购物网站
 import requests
 import urllib
+from utils.utilsrequests import reqests_get
 def user_info():
 #第一步登录，拿到token
     url1 = 'http://admin.5istudy.online/login/'
@@ -13,14 +14,16 @@ def user_info():
 
     r = requests.post(url1,json=data)
     #print(r.json())
-    print(r.json()["token"])
+    #print(r.json()["token"])
     token = r.json()["token"]
 #第二部获取用户基本信息
-    url2 = 'http://admin.5istudy.online/users/1/'
+    url = 'http://admin.5istudy.online/users/1/'
 
     headers ={'Authorization':'JWT '+ token }
-    s = requests.get(url2,headers=headers)
-    print(s.json())
+    #print(headers)
+    #s = requests.get(url,headers=headers)
+    s = reqests_get(url,headers)
+    print(s)
 if __name__ == '__main__':
 
     user_info()

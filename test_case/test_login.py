@@ -3,6 +3,7 @@
 # 代码内容：登录购物网站
 import requests
 import urllib
+from utils.utilsrequests import reqests_post
 def login():
 
     url = 'http://admin.5istudy.online/login/'
@@ -11,13 +12,12 @@ def login():
         "password": '123456'
     }
 
-    r = requests.post(url,json=data)
-    print(r.json())
-    token = r.json()["token"]
-    print(r.json()["token"])
+    #r = requests.post(url,json=data)
+    r = reqests_post(url,json=data)
 
+    print(r)
 
-
+    print(r["body"]["token"])
 
 if __name__ == '__main__':
     login()
