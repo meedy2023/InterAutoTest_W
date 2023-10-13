@@ -3,6 +3,8 @@
 # 代码内容：购物车
 import requests
 import urllib
+from utils.utilsrequests import reqests_post
+from utils.utilsrequests import reqests_get
 
 def shopcarts():
     # 第一步登录，拿到token
@@ -12,10 +14,12 @@ def shopcarts():
         "password": '123456'
     }
 
-    r = requests.post(url1, json=data)
+    #r = requests.post(url1, json=data)
+    r = reqests_post(url1, json=data)
     # print(r.json())
-    print(r.json()["token"])
-    token = r.json()["token"]
+    print(r)
+    token = r["body"]["token"]
+    print(token)
     #第二部加入购物车
     url= 'http://admin.5istudy.online/shopcarts/'
     headers = {'Authorization': 'JWT ' + token}
@@ -23,7 +27,8 @@ def shopcarts():
         'nums':'6',
         'goods':'3'
     }
-    r = requests.post(url,headers=headers,json=data)
-    print(r.json())
+    #r = requests.post(url,headers=headers,json=data)
+    r =  reqests_post(url,headers=headers,json=data)
+    print(r)
 if __name__ == '__main__':
     shopcarts()
