@@ -7,7 +7,7 @@ import urllib
 def goods_list():
     url= 'http://admin.5istudy.online/goods/'
     data ={
-        'page':'1',
+        'page':'2',
         'pricemin':'',
         'pricemax':'',
         'is_hot':'1',
