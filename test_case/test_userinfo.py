@@ -4,6 +4,7 @@
 import requests
 import urllib
 from utils.utilsrequests import reqests_get
+from utils.utilsrequests import Request
 def user_info():
 #第一步登录，拿到token
     url1 = 'http://admin.5istudy.online/login/'
@@ -12,18 +13,23 @@ def user_info():
         "password": '123456'
     }
 
-    r = requests.post(url1,json=data)
+    #r = requests.post(url1,json=data)
+    request = Request()
+    r = request.post(url1,json=data)
     #print(r.json())
     #print(r.json()["token"])
-    token = r.json()["token"]
+    token = r["body"]["token"]
 #第二部获取用户基本信息
     url = 'http://admin.5istudy.online/users/1/'
 
     headers ={'Authorization':'JWT '+ token }
     #print(headers)
     #s = requests.get(url,headers=headers)
-    s = reqests_get(url,headers)
+    #s = reqests_get(url,headers)
+    request = Request()
+    s = request.get(url,headers=headers)
     print(s)
+
 if __name__ == '__main__':
 
     user_info()

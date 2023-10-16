@@ -4,6 +4,7 @@
 import requests
 import urllib
 from utils.utilsrequests import reqests_post
+from utils.utilsrequests import Request
 def login():
 
     url = 'http://admin.5istudy.online/login/'
@@ -13,11 +14,12 @@ def login():
     }
 
     #r = requests.post(url,json=data)
-    r = reqests_post(url,json=data)
+    #r = reqests_post(url,json=data)
+    request = Request()
+    r = request.post(url,json=data)
 
     print(r)
-
-    print(r["body"]["token"])
+    print(type(r))
 
 if __name__ == '__main__':
     login()
