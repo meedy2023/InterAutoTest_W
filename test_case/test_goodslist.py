@@ -4,6 +4,7 @@
 import requests
 import urllib
 from utils.utilsrequests import reqests_get
+from utils.utilsrequests import Request
 #第1部分获取商品列表信息
 def goods_list():
     url= 'http://admin.5istudy.online/goods/'
@@ -18,7 +19,9 @@ def goods_list():
         'ordering':'-add_time'
     }
     #r = requests.get(url,json=data)
-    r = reqests_get(url,json=data)
+    #r = reqests_get(url,json=data)
+    request = Request()
+    r = request.get(url,json=data)
     print(r)
 
 if __name__ == '__main__':
