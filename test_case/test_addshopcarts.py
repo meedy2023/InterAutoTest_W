@@ -1,6 +1,6 @@
 # 作者:meedy
 # 编写时间：2023/10/13  12:41
-# 代码内容：购物车
+# 代码内容：实现加入购物车
 import requests
 import urllib
 from utils.utilsrequests import reqests_post
